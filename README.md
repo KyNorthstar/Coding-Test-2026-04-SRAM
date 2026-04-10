@@ -1,10 +1,12 @@
 # [Ky Coding Test 2026-04 for SRAM](https://github.com/KyNorthstar/Coding-Test-2026-04-SRAM)
 
-A coding test I performed on 2026-04 for SRAM
+A coding test I performed on 2026-04 for SRAM.
 
 
 
 ## Building & running
+
+First, clone this entire repository to your local machine.
 
 This is a standard Xcode project. To build it, you only need the following installed with standard configurations:
 - Xcode 26.4 or compatible
@@ -21,6 +23,12 @@ After that, the steps to build are standard:
 
 
 ## Features
+
+The concept behind this app is that it displays your Strava activity like a GitHub activity chart.
+
+Here's a **mockup**:
+
+![A screenshot of an iPhone app showing a dot matrix 7-wide, like a vertical version of GitHub's activity chart with different colors.](./Cadence%20main%20screen%20mockup.png)
 
 
 
