@@ -1,5 +1,5 @@
 //
-//  StravaConfiguration.swift
+//  AppConfigValues.swift
 //  Coding-Test-2026-04-SRAM
 //
 //  Created by Ky on 2026-04-10.
@@ -7,19 +7,26 @@
 
 import Foundation
 
-import CollectionTools
+
+
+@available(*, deprecated, renamed: "AppConfigValues")
+typealias StravaConfig = AppConfigValues
 
 
 
 /// This app's configuration for using the Strava API
-enum StravaConfiguration {
-    static let clientId: String? = {
-        (Bundle.main.object(forInfoDictionaryKey: "STRAVA_CLIENT_ID") as? String)?.nonEmptyOrNil
-    }()
-    static let clientSecret: String? = {
-        (Bundle.main.object(forInfoDictionaryKey: "STRAVA_CLIENT_SECRET") as? String)?.nonEmptyOrNil
-    }()
-    
+enum AppConfigValues {}
+
+
+
+extension AppConfigValues {
+    static let redirectUri  = "cadence://oauth/callback"
+    static let scope        = "activity:read_all"
+}
+
+
+
+extension AppConfigValues {
     enum URLs {
         static let authorize = URL(string: "https://www.strava.com/oauth/authorize")!
         static let token     = URL(string: "https://www.strava.com/oauth/token")!

@@ -9,9 +9,9 @@ import SwiftUI
 
 
 
-private extension StravaClient {
+private extension StravaClientIdentity {
     struct Key: SwiftUI.EnvironmentKey {
-        static let defaultValue: StravaClient = .placeholder
+        static let defaultValue: StravaClientIdentity = .placeholder
     }
 }
 
@@ -19,8 +19,8 @@ private extension StravaClient {
 
 extension EnvironmentValues {
     /// The current Strava-side app
-    var stravaClient: StravaClient {
-        get { self[StravaClient.Key.self] }
-        set { self[StravaClient.Key.self] = newValue }
+    var stravaClient: StravaClientIdentity {
+        get { self[StravaClientIdentity.Key.self] }
+        set { self[StravaClientIdentity.Key.self] = newValue }
     }
 }

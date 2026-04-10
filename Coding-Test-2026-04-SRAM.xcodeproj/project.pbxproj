@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		091DB50C2F8998700027FBE1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 091DB50B2F8998700027FBE1 /* Config.xcconfig */; };
 		091DB5112F899E530027FBE1 /* CollectionTools in Frameworks */ = {isa = PBXBuildFile; productRef = 091DB5102F899E530027FBE1 /* CollectionTools */; };
+		091DB51A2F89A1DD0027FBE1 /* Introspection in Frameworks */ = {isa = PBXBuildFile; productRef = 091DB5192F89A1DD0027FBE1 /* Introspection */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091DB51A2F89A1DD0027FBE1 /* Introspection in Frameworks */,
 				091DB5112F899E530027FBE1 /* CollectionTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +95,7 @@
 			name = "Coding-Test-2026-04-SRAM";
 			packageProductDependencies = (
 				091DB5102F899E530027FBE1 /* CollectionTools */,
+				091DB5192F89A1DD0027FBE1 /* Introspection */,
 			);
 			productName = "Coding-Test-2026-04-SRAM";
 			productReference = 091DB4F12F898CC20027FBE1 /* Coding-Test-2026-04-SRAM.app */;
@@ -124,6 +127,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				091DB50F2F899E530027FBE1 /* XCRemoteSwiftPackageReference "Swift-Collection-Tools" */,
+				091DB5182F89A1DD0027FBE1 /* XCRemoteSwiftPackageReference "Swift-Introspection" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 091DB4F22F898CC20027FBE1 /* Products */;
@@ -378,6 +382,14 @@
 				minimumVersion = 3.2.0;
 			};
 		};
+		091DB5182F89A1DD0027FBE1 /* XCRemoteSwiftPackageReference "Swift-Introspection" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Introspection.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -385,6 +397,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 091DB50F2F899E530027FBE1 /* XCRemoteSwiftPackageReference "Swift-Collection-Tools" */;
 			productName = CollectionTools;
+		};
+		091DB5192F89A1DD0027FBE1 /* Introspection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091DB5182F89A1DD0027FBE1 /* XCRemoteSwiftPackageReference "Swift-Introspection" */;
+			productName = Introspection;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

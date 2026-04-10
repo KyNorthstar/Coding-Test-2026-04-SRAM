@@ -50,3 +50,4 @@ Here's a **mockup**:
 
 In a production app, I would do the following differently:
 - The client secret wouldn't be in the binary at all, instead stored in a backend proxy and fetched using a public key at runtime
+- I'd try to make keychain access happen in the background where possible

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import CollectionTools
+
 
 
 @main
@@ -14,10 +16,10 @@ struct App: SwiftUI.App {
     
     var body: some Scene {
         WindowGroup {
-            if let stravaClientId = StravaConfiguration.clientId,
-               let stravaClientSecret = StravaConfiguration.clientSecret {
+            if let stravaClientId = AppConfigValues.clientId?.nonEmptyOrNil,
+               let stravaClientSecret = AppConfigValues.clientSecret?.nonEmptyOrNil {
                 ContentView()
-                    .environment(\.stravaClient, StravaClient(id: stravaClientId, secret: stravaClientSecret))
+                    .environment(\.stravaClient, StravaClientIdentity(id: stravaClientId, secret: stravaClientSecret))
             }
             else {
                 Text(try! AttributedString(markdown: """

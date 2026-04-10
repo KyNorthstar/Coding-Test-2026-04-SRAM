@@ -1,5 +1,5 @@
 {
-  "originHash" : "c2611e280cf7661b476fb6f2b2e6be04657cdb82eb058e65ac641bd6b8fc3253",
+  "originHash" : "b0c474c377b7421c3298c3d9e01b7c2acb0afa79416a00c8c2a2be40f508ca72",
   "pins" : [
     {
       "identity" : "swift-collection-tools",
@@ -17,6 +17,60 @@
       "state" : {
         "revision" : "a854f4ed89b7e404019b5a09d24e067acc15432d",
         "version" : "1.2.4"
+      }
+    },
+    {
+      "identity" : "swift-introspection",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-Introspection.git",
+      "state" : {
+        "revision" : "80eac12471167aa7ab8c562f76d889d51a4228a1",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "swift-range-tools",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-Range-Tools.git",
+      "state" : {
+        "revision" : "8efcac712d0bd765ac903cb9fd27cc49b6b4ce58",
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "swift-safe-collection-access",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-Safe-Collection-Access.git",
+      "state" : {
+        "revision" : "fef8e158f44daab66d24cf364a1b441bb64ade39",
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "swift-semver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-SemVer.git",
+      "state" : {
+        "revision" : "adcdc0836253c9bbb5b337eaa9d87553012ae248",
+        "version" : "3.0.0-Beta.5"
+      }
+    },
+    {
+      "identity" : "swift-special-string",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-Special-String.git",
+      "state" : {
+        "revision" : "7a82d5b07b72aed848b028d3e8bf6d9591ec108a",
+        "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swift-string-integer-access",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-String-Integer-Access.git",
+      "state" : {
+        "revision" : "595374e76274a7e951ba183fdd7f443801091d14",
+        "version" : "2.1.0"
       }
     }
   ],
