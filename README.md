@@ -8,9 +8,23 @@ A coding test I performed on 2026-04 for SRAM.
 
 First, clone this entire repository to your local machine.
 
+
+### Prerequisites
+
 This is a standard Xcode project. To build it, you only need the following installed with standard configurations:
 - Xcode 26.4 or compatible
 - iOS 26 SDK
+
+This is also a Strava project. The secret and client ID aren't stored in this public repo, so you'll need to provide your own or ask Ky for theirs. Once you have those:
+- Copy the file `Config.xcconfig TEMPLATE.txt` and rename the new copy to `Config.xcconfig`
+- Open the config in a text editor
+- Replace `YOUR_CLIENT_ID_HERE` with a valid Strava Client ID
+- Replace `YOUR_CLIENT_SECRET_HERE` with a valid Strava Client Secret
+
+That new config file will be ignored by Git. Ensure that remains so, and that those values remain secret to your local machine andor trusted parties.
+
+
+### Build & run
 
 After that, the steps to build are standard:
 - Open the Xcode project in this folder
@@ -33,3 +47,6 @@ Here's a **mockup**:
 
 
 ## If I had more time
+
+In a production app, I would do the following differently:
+- The client secret wouldn't be in the binary at all, instead stored in a backend proxy and fetched using a public key at runtime

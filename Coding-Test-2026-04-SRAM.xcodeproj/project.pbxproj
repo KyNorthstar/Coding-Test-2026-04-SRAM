@@ -6,10 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		091DB50C2F8998700027FBE1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 091DB50B2F8998700027FBE1 /* Config.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		091DB4F12F898CC20027FBE1 /* Coding-Test-2026-04-SRAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coding-Test-2026-04-SRAM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		091DB5052F898CF20027FBE1 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		091DB5062F898CF20027FBE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		091DB50A2F8997640027FBE1 /* Config.xcconfig TEMPLATE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Config.xcconfig TEMPLATE.txt"; sourceTree = "<group>"; };
+		091DB50B2F8998700027FBE1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -36,6 +42,8 @@
 			children = (
 				091DB5052F898CF20027FBE1 /* LICENSE.txt */,
 				091DB5062F898CF20027FBE1 /* README.md */,
+				091DB50A2F8997640027FBE1 /* Config.xcconfig TEMPLATE.txt */,
+				091DB50B2F8998700027FBE1 /* Config.xcconfig */,
 				091DB4F32F898CC20027FBE1 /* Coding-Test-2026-04-SRAM */,
 				091DB4F22F898CC20027FBE1 /* Products */,
 			);
@@ -113,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091DB50C2F8998700027FBE1 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
