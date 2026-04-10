@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		091DB50C2F8998700027FBE1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 091DB50B2F8998700027FBE1 /* Config.xcconfig */; };
+		091DB5112F899E530027FBE1 /* CollectionTools in Frameworks */ = {isa = PBXBuildFile; productRef = 091DB5102F899E530027FBE1 /* CollectionTools */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,9 +19,22 @@
 		091DB50B2F8998700027FBE1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		091DB50E2F899DC00027FBE1 /* Exceptions for "Coding-Test-2026-04-SRAM" folder in "Coding-Test-2026-04-SRAM" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 091DB4F02F898CC20027FBE1 /* Coding-Test-2026-04-SRAM */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		091DB4F32F898CC20027FBE1 /* Coding-Test-2026-04-SRAM */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				091DB50E2F899DC00027FBE1 /* Exceptions for "Coding-Test-2026-04-SRAM" folder in "Coding-Test-2026-04-SRAM" target */,
+			);
 			path = "Coding-Test-2026-04-SRAM";
 			sourceTree = "<group>";
 		};
@@ -31,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091DB5112F899E530027FBE1 /* CollectionTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +92,7 @@
 			);
 			name = "Coding-Test-2026-04-SRAM";
 			packageProductDependencies = (
+				091DB5102F899E530027FBE1 /* CollectionTools */,
 			);
 			productName = "Coding-Test-2026-04-SRAM";
 			productReference = 091DB4F12F898CC20027FBE1 /* Coding-Test-2026-04-SRAM.app */;
@@ -106,6 +122,9 @@
 			);
 			mainGroup = 091DB4E82F898CC20027FBE1;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				091DB50F2F899E530027FBE1 /* XCRemoteSwiftPackageReference "Swift-Collection-Tools" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 091DB4F22F898CC20027FBE1 /* Products */;
 			projectDirPath = "";
@@ -261,6 +280,7 @@
 		};
 		091DB4FD2F898CC30027FBE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 091DB50B2F8998700027FBE1 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -269,6 +289,7 @@
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Coding-Test-2026-04-SRAM/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,6 +314,7 @@
 		};
 		091DB4FE2F898CC30027FBE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 091DB50B2F8998700027FBE1 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +323,7 @@
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Coding-Test-2026-04-SRAM/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,6 +368,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		091DB50F2F899E530027FBE1 /* XCRemoteSwiftPackageReference "Swift-Collection-Tools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RougeWare/Swift-Collection-Tools.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		091DB5102F899E530027FBE1 /* CollectionTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091DB50F2F899E530027FBE1 /* XCRemoteSwiftPackageReference "Swift-Collection-Tools" */;
+			productName = CollectionTools;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 091DB4E92F898CC20027FBE1 /* Project object */;
 }

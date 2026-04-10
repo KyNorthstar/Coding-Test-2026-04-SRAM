@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.stravaClient)
+    private var stravaClient
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Client ID: \(stravaClient.id)")
+            Text("Client Secret: \(stravaClient.secret)")
         }
         .padding()
     }

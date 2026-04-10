@@ -7,15 +7,17 @@
 
 import Foundation
 
+import CollectionTools
+
 
 
 /// This app's configuration for using the Strava API
 enum StravaConfiguration {
-    static let clientID: String? = {
-        Bundle.main.object(forInfoDictionaryKey: "STRAVA_CLIENT_ID") as? String
+    static let clientId: String? = {
+        (Bundle.main.object(forInfoDictionaryKey: "STRAVA_CLIENT_ID") as? String)?.nonEmptyOrNil
     }()
     static let clientSecret: String? = {
-        Bundle.main.object(forInfoDictionaryKey: "STRAVA_CLIENT_SECRET") as? String
+        (Bundle.main.object(forInfoDictionaryKey: "STRAVA_CLIENT_SECRET") as? String)?.nonEmptyOrNil
     }()
     
     enum URLs {
