@@ -18,14 +18,21 @@ struct ContentView: View {
     @State
     private var client: LoadingState<StravaApiClient> = .notStarted
     
+    @State
+    private var showDemo = false
+    
     
     var body: some View {
-        if case .success(let client) = client {
+        if showDemo {
+            HeatmapView(activities: .random(pastDaysToGenerate: 200))
+        }
+        else if case .success(let client) = client {
             if stravaOauthService.isAuthenticated {
-                HeatmapView(client: client)
+                HeatmapLoadingView(client: client)
             }
             else {
                 LoginView()
+                    .onTapGesture(count: 5, perform: { showDemo = true })
             }
         }
         else {
@@ -36,10 +43,4 @@ struct ContentView: View {
                 }
         }
     }
-}
-
-
-
-#Preview {
-    ContentView()
 }

@@ -13,7 +13,7 @@ import Foundation
 ///
 /// Only consistency-relevant fields are decoded. Extend as needed without breaking
 /// existing callers — `JSONDecoder` ignores unknown keys by default.
-struct Activity: Equatable, Decodable, Identifiable {
+struct Activity: Equatable, Identifiable {
     
     /// Strava's globally unique activity ID.
     let id: Int
@@ -24,17 +24,42 @@ struct Activity: Equatable, Decodable, Identifiable {
     /// Total distance
     let distance: Measurement<UnitLength>
     
-    /// Moving time in seconds.
-    let movingTime: Int
+    /// How long the athlete spent moving in theactivity
+    let movingTime: Measurement<UnitDuration>
     
-    /// Cumulative elevation gain in meters.
-    let totalElevationGain: Double
+    /// Cumulative elevation gain
+    let totalElevationGain: Measurement<UnitLength>
     
     /// Activity start time in the athlete's local timezone, as parsed from ISO8601.
     let startDate: Date
     
     /// Strava sport type string, e.g. `"Ride"`, `"VirtualRide"`, `"Run"`.
     let type: String
+}
+
+
+
+extension Activity: Decodable {
+    enum CodingKeys: CodingKey {
+        case id
+        case name
+        case distance
+        case movingTime
+        case totalElevationGain
+        case startDate
+        case type
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id                 =              try container.decode(Int.self,    forKey: .id)
+        self.name               =              try container.decode(String.self, forKey: .name)
+        self.distance           = .init(value: try container.decode(Double.self, forKey: .distance), unit: .meters)
+        self.movingTime         = .init(value: try container.decode(Double.self, forKey: .movingTime), unit: .seconds)
+        self.totalElevationGain = .init(value: try container.decode(Double.self, forKey: .totalElevationGain), unit: .meters)
+        self.startDate          =              try container.decode(Date.self,   forKey: .startDate)
+        self.type               =              try container.decode(String.self, forKey: .type)
+    }
 }
 
 

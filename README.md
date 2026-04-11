@@ -52,3 +52,8 @@ In a production app, I would do the following differently:
 - The client secret wouldn't be in the binary at all, instead stored in a backend proxy and fetched using a public key at runtime
 - I'd try to make keychain access happen in the background where possible
 - A lot more gracefull error handling and localization
+- Proper pagination rather than loading it all at once
+
+There's also major issues which I'd fix given a full workday:
+- Login is broken due to an invalid redirect URL (TIL Strava doesn't like bespoke app URLs)
+- Heatmap isn't showing even with dummy data

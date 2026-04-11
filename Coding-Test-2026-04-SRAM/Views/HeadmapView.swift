@@ -3,6 +3,7 @@
 //  Coding-Test-2026-04-SRAM
 //
 //  Created by Ky on 2026-04-10.
+//  Portions of this file were created using Claude 4.6 Sonnet
 //
 
 import Combine
@@ -32,15 +33,13 @@ struct HeatmapView: View {
     @State
     private var consistencyScore: ConsistencyScore?
     
-    private let client: StravaApiClient
-    
-    @State private var activityLoadingState: FailableLoadingState<[Activity], ActivityLoadError> = .notStarted
-    
     @State private var selectedCell: Cell?
     
+    private let activities: [Activity]
     
-    init(client: StravaApiClient) {
-        self.client = client
+    
+    init(activities: [Activity]) {
+        self.activities = activities
     }
     
     
@@ -53,52 +52,7 @@ struct HeatmapView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 24)
         }
-        .overlay {
-            switch activityLoadingState {
-            case .notStarted,
-                    .loading:
-                loadingOverlay
-                
-            case .success(_):
-                EmptyView()
-                
-            case .failure(let error):
-                Text(error.localizedDescription)
-            }
-        }
-        
-        .task {
-            activityLoadingState = .loading
-            //try? await Task.sleep(for: .seconds(0.5))
-            do {
-                activityLoadingState = .success(try await client.fetchActivities())
-            }
-            catch let error as ActivityLoadError {
-                activityLoadingState = .failure(error)
-            }
-            catch {
-                // https://github.com/swiftlang/swift/issues/87556
-                assertionFailure("Impossible error")
-            }
-        }
-        .onChange(of: activityLoadingState) { _, newValue in
-            switch newValue {
-            case .loading,
-                    .notStarted:
-                break
-                
-            case .success(let activities):
-                self.rebuild(from: activities)
-                
-            case .failure(_):
-                self.rebuild(from: [])
-            }
-        }
     }
-    
-    /// Row height as seen by the month label column — must account for spacing
-    /// so label frames stay in sync with grid rows.
-    private var rowHeight: CGFloat { cellSize + cellSpacing }
 }
 
 
@@ -157,6 +111,13 @@ private extension HeatmapView {
             brightness: 1.0   - intensity * 0.32,
         )
     }
+    
+    
+    /// Row height as seen by the month label column — must account for spacing
+    /// so label frames stay in sync with grid rows.
+    private var rowHeight: CGFloat {
+        cellSize + cellSpacing
+    }
 }
 
 
@@ -192,7 +153,7 @@ private extension HeatmapView {
 // MARK: - Private functionality
 
 private extension HeatmapView {
-    private func rebuild(from activities: [Activity]) {
+    func build() {
         let calendar = Calendar.current
         let today    = calendar.startOfDay(for: .now)
         
@@ -299,4 +260,10 @@ private extension HeatmapView {
             .presentationCompactAdaptation(.popover)
         }
     }
+}
+
+
+
+#Preview {
+    HeatmapView(activities: .random(pastDaysToGenerate: 200))
 }
