@@ -19,7 +19,8 @@ struct App: SwiftUI.App {
             if let stravaClientId = AppConfigValues.clientId?.nonEmptyOrNil,
                let stravaClientSecret = AppConfigValues.clientSecret?.nonEmptyOrNil {
                 ContentView()
-                    .environment(\.stravaClient, StravaClientIdentity(id: stravaClientId, secret: stravaClientSecret))
+                    .environment(\.stravaClientIdentity, StravaClientIdentity(id: stravaClientId, secret: stravaClientSecret))
+                    .environmentObject(StravaOAuthService())
             }
             else {
                 Text(try! AttributedString(markdown: """

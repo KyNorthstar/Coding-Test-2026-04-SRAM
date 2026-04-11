@@ -19,7 +19,7 @@ private extension StravaClientIdentity {
 
 extension EnvironmentValues {
     /// The current Strava-side app
-    var stravaClient: StravaClientIdentity {
+    var stravaClientIdentity: StravaClientIdentity {
         get { self[StravaClientIdentity.Key.self] }
         set { self[StravaClientIdentity.Key.self] = newValue }
     }

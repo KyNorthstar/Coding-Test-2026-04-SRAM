@@ -24,7 +24,7 @@ private let activityQueryItem_pageSize          = "per_page"
 /// internally for activity fetches; callers always receive the complete flat dataset.
 ///
 /// To extend: add new `func fetch…() async throws` methods mirroring this pattern.
-final class StravaAPIClient {
+final class StravaApiClient {
     
     private let auth: StravaOAuthService
     private let session: URLSession
@@ -48,9 +48,71 @@ final class StravaAPIClient {
 
 
 
+// MARK: - Activities
+
+extension StravaApiClient {
+    
+    /// Fetches all activities within the given window, transparently iterating Strava's
+    /// 200-per-page limit until the response is exhausted.
+    ///
+    /// - Parameters:
+    ///   - after:  Fetch activities starting after this date. Defaults to 52 weeks ago.
+    ///   - before: Fetch activities ending before this date. Defaults to now.
+    func fetchActivities(
+        after:  Date = Calendar.current.date(byAdding: .weekOfYear, value: -52, to: .now)!,
+        before: Date = .now)
+    async throws(ActivityLoadError) -> [Activity] {
+        var all: [Activity] = []
+        var page = 1
+        var batch: [Activity]
+        
+        repeat {
+            defer { page += 1 }
+            
+            do {
+                batch = try await get(
+                    path: athleteActivitiesSubpath,
+                    queryItems: [
+                        .init(name: activityQueryItem_earliestTimestamp, value: String(Int(after.timeIntervalSince1970))),
+                        .init(name: activityQueryItem_latestTimestamp,   value: String(Int(before.timeIntervalSince1970))),
+                        .init(name: activityQueryItem_pageNumber,        value: String(page)),
+                        .init(name: activityQueryItem_pageSize,          value: "200"),
+                    ]
+                )
+            }
+            catch {
+                throw .networkError(error: error)
+            }
+            
+            all.append(contentsOf: batch)
+        } while batch.count >= 200
+        
+        return all
+    }
+}
+
+
+
+enum ActivityLoadError: Error {
+    case networkError(error: Error)
+}
+
+
+
+extension ActivityLoadError: Equatable {
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.networkError(let lhsError), .networkError(let rhsError)):
+            (lhsError as NSError) == (rhsError as NSError)
+        }
+    }
+}
+
+
+
 // MARK: - Private conveniences
 
-private extension StravaAPIClient {
+private extension StravaApiClient {
     /// Performs an authenticated GET and decodes the response body into `T`.
     func get<T: Decodable>(path: String, queryItems: [URLQueryItem] = []) async throws -> T {
         let token = try await auth.validAccessToken()
@@ -79,7 +141,7 @@ private extension StravaAPIClient {
 
 // MARK: - Errors
 
-extension StravaAPIClient {
+extension StravaApiClient {
     enum ApiError: LocalizedError {
         case invalidResponse
         case httpError(Int, Data)
